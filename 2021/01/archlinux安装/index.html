@@ -1,0 +1,800 @@
+<!doctype html><html lang=zh-cn><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="noodp"><meta http-equiv=x-ua-compatible content="IE=edge, chrome=1"><title>Archlinux的安装与配置 - gylt</title><meta name=Description content="这是我的全新 Hugo 网站"><meta property="og:title" content="Archlinux的安装与配置"><meta property="og:description" content="本教程是记录快速的安装配置arch linux的笔记,部分内容来源于网络,本人只是整理教程"><meta property="og:type" content="article"><meta property="og:url" content="https://gylt37.github.io/2021/01/archlinux%E5%AE%89%E8%A3%85/"><meta property="og:image" content="https://gylt37.github.io/47"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-01-01T00:00:00+08:00"><meta property="article:modified_time" content="2021-01-01T00:00:00+08:00"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://gylt37.github.io/47"><meta name=twitter:title content="Archlinux的安装与配置"><meta name=twitter:description content="本教程是记录快速的安装配置arch linux的笔记,部分内容来源于网络,本人只是整理教程"><meta name=application-name content="LoveIt"><meta name=apple-mobile-web-app-title content="LoveIt"><meta name=theme-color content="#ffffff"><meta name=msapplication-TileColor content="#da532c"><link rel=canonical href=https://gylt37.github.io/2021/01/archlinux%E5%AE%89%E8%A3%85/><link rel=stylesheet href=/lib/normalize/normalize.min.css><link rel=stylesheet href=/css/style.min.css><link rel=stylesheet href=/lib/fontawesome-free/all.min.css><link rel=stylesheet href=/lib/animate/animate.min.css><script type=application/ld+json>{"@context":"http://schema.org","@type":"BlogPosting","headline":"Archlinux的安装与配置","inLanguage":"zh-CN","mainEntityOfPage":{"@type":"WebPage","@id":"https:\/\/gylt37.github.io\/2021\/01\/archlinux%E5%AE%89%E8%A3%85\/"},"genre":"posts","keywords":"Archlinux","wordcount":7516,"url":"https:\/\/gylt37.github.io\/2021\/01\/archlinux%E5%AE%89%E8%A3%85\/","datePublished":"2021-01-01T00:00:00+08:00","dateModified":"2021-01-01T00:00:00+08:00","publisher":{"@type":"Organization","name":"孤云凌天"},"author":{"@type":"Person","name":"孤云凌天"},"description":""}</script></head><body header-desktop=auto header-mobile=auto><script type=text/javascript>(window.localStorage&&localStorage.getItem('theme')?localStorage.getItem('theme')==='dark':'auto'==='auto'?window.matchMedia('(prefers-color-scheme: dark)').matches:'auto'==='dark')&&document.body.setAttribute('theme','dark')</script><div id=mask></div><div class=wrapper><header class=desktop id=header-desktop><div class=header-wrapper><div class=header-title><a href=/ title=gylt><img class="lazyload logo" src=/svg/loading.min.svg data-src=/favicon.png data-srcset="/favicon.png, /favicon.png 1.5x, /favicon.png 2x" data-sizes=auto alt=/favicon.png title=/favicon.png></a></div><div class=menu><div class=menu-inner><a class=menu-item href=/posts/ title=所有文章>文章 </a><a class=menu-item href=/tags/ title=标签>标签 </a><a class=menu-item href=/categories/ title=分类>分类 </a><span class="menu-item delimiter"></span><span class="menu-item search" id=search-desktop><input type=text placeholder=搜索文章标题或内容... id=search-input-desktop>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-desktop title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-desktop title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-desktop><i class="fas fa-spinner fa-fw fa-spin"></i></span>
+</span><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题><i class="fas fa-adjust fa-fw"></i></a></div></div></div></header><header class=mobile id=header-mobile><div class=header-container><div class=header-wrapper><div class=header-title><a href=/ title=gylt><img class="lazyload logo" src=/svg/loading.min.svg data-src=/favicon.png data-srcset="/favicon.png, /favicon.png 1.5x, /favicon.png 2x" data-sizes=auto alt=/favicon.png title=/favicon.png></a></div><div class=menu-toggle id=menu-toggle-mobile><span></span><span></span><span></span></div></div><div class=menu id=menu-mobile><div class=search-wrapper><div class="search mobile" id=search-mobile><input type=text placeholder=搜索文章标题或内容... id=search-input-mobile>
+<a href=javascript:void(0); class="search-button search-toggle" id=search-toggle-mobile title=搜索><i class="fas fa-search fa-fw"></i></a>
+<a href=javascript:void(0); class="search-button search-clear" id=search-clear-mobile title=清空><i class="fas fa-times-circle fa-fw"></i></a>
+<span class="search-button search-loading" id=search-loading-mobile><i class="fas fa-spinner fa-fw fa-spin"></i></span></div><a href=javascript:void(0); class=search-cancel id=search-cancel-mobile>取消</a></div><a class=menu-item href=/posts/ title=所有文章>文章</a><a class=menu-item href=/tags/ title=标签>标签</a><a class=menu-item href=/categories/ title=分类>分类</a><a href=javascript:void(0); class="menu-item theme-switch" title=切换主题>
+<i class="fas fa-adjust fa-fw"></i></a></div></div></header><div class="search-dropdown desktop"><div id=search-dropdown-desktop></div></div><div class="search-dropdown mobile"><div id=search-dropdown-mobile></div></div><main class=main><div class=container><div class=toc id=toc-auto><h2 class=toc-title>目录</h2><div class=toc-content id=toc-content-auto></div></div><article class="page single"><h1 class="single-title animated flipInX">Archlinux的安装与配置</h1><div class=post-meta><div class=post-meta-line><span class=post-author><a href=about title=Author rel=" author" class=author><i class="fas fa-user-circle fa-fw"></i>孤云凌天</a></span>&nbsp;<span class=post-category>收录于 <a href=/categories/%E7%B3%BB%E7%BB%9F%E9%85%8D%E7%BD%AE/><i class="far fa-folder fa-fw"></i>系统配置</a></span></div><div class=post-meta-line><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime=2021-01-01>2021-01-01</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;约 7516 字&nbsp;
+<i class="far fa-clock fa-fw"></i>&nbsp;预计阅读 16 分钟&nbsp;</div></div><div class="details toc" id=toc-static kept><div class="details-summary toc-title"><span>目录</span>
+<span><i class="details-icon fas fa-angle-right"></i></span></div><div class="details-content toc-content" id=toc-content-static><nav id=TableOfContents><ul><li><a href=#传教>传教</a><ul><li><a href=#简洁>简洁</a></li><li><a href=#现代>现代</a></li><li><a href=#实用>实用</a></li><li><a href=#用户友好>用户友好</a></li></ul></li><li><a href=#安装arch>安装arch</a><ul><li><a href=#刻录启动盘>刻录启动盘</a></li><li><a href=#联网>联网</a><ul><li><a href=#有线>有线</a></li><li><a href=#无线>无线</a></li></ul></li><li><a href=#分区>分区</a></li><li><a href=#安装系统>安装系统</a></li><li><a href=#配置系统>配置系统</a></li><li><a href=#系统管理>系统管理</a></li><li><a href=#软件包管理>软件包管理</a></li><li><a href=#安装引导程序>安装引导程序</a><ul><li><a href=#refind>refind</a></li><li><a href=#grub>grub</a></li></ul></li><li><a href=#退出安装>退出安装</a></li></ul></li><li><a href=#桌面>桌面</a><ul><li><a href=#dwm>dwm</a><ul><li><a href=#sddm>sddm</a></li><li><a href=#startx>startx</a></li></ul></li><li><a href=#主题配置>主题配置</a></li><li><a href=#refind美化>refind美化</a></li><li><a href=#字体>字体</a></li></ul></li><li><a href=#硬件>硬件</a><ul><li><a href=#快照>快照</a></li><li><a href=#更新>更新</a></li><li><a href=#电源>电源</a></li><li><a href=#应用>应用</a></li><li><a href=#睡眠>睡眠</a></li><li><a href=#休眠>休眠</a></li><li><a href=#亮度>亮度</a></li><li><a href=#磁盘>磁盘</a></li><li><a href=#显卡>显卡</a></li><li><a href=#时间>时间</a></li><li><a href=#蓝牙>蓝牙</a></li><li><a href=#鼠标>鼠标</a></li><li><a href=#触摸板>触摸板</a></li><li><a href=#键盘>键盘</a></li><li><a href=#屏幕>屏幕</a></li><li><a href=#关机>关机</a></li><li><a href=#启动项>启动项</a></li></ul></li><li><a href=#桌面配置>桌面配置</a><ul><li><a href=#alacritty>alacritty</a></li><li><a href=#rofi>rofi</a></li><li><a href=#dunst>dunst</a></li><li><a href=#红移>红移</a></li><li><a href=#picom>picom</a></li><li><a href=#声音>声音</a></li><li><a href=#代理>代理</a></li><li><a href=#rime>Rime</a></li></ul></li><li><a href=#安装常用软件>安装常用软件</a><ul><li><a href=#虚拟机>虚拟机</a></li><li><a href=#安卓模拟器waydroid>安卓模拟器waydroid</a></li><li><a href=#软件整理>软件整理</a></li><li><a href=#retroarch>retroarch</a></li></ul></li></ul></nav></div></div><div class=content id=content><p>本教程是记录快速的安装配置arch linux的笔记,部分内容来源于网络,本人只是整理教程</p><h2 id=传教>传教</h2><p><del>ArchLinux吸引我的一点：软件多，教程多</del></p><p><a href=https://wiki.archlinux.org/title/Arch_Linux target=_blank rel="noopener noreffer">Arch Linux</a></p><p>Arch 的哲学:<strong>Keep It Simple， Stupid</strong>（对应中文为“保持简单，且一目了然”）</p><h3 id=简洁>简洁</h3><p>Arch Linux 将简洁定义为：<strong>避免任何不必要的添加、修改和复杂增加</strong></p><h3 id=现代>现代</h3><p>Arch尽全力保持软件处于最新的稳定版本，采用<strong>滚动升级</strong>策略</p><h3 id=实用>实用</h3><p>Arch 注重实用性，避免意识形态之争。最终的设计决策都是由开发者的共识决定。</p><p>Arch Linux 的仓库中包含大量的软件包和编译脚本。<strong>实用性大于意识形态</strong>。</p><h3 id=用户友好>用户友好</h3><p>许多 Linux 发行版都试图变得更“用户友好”，Arch Linux 则一直是，永远会是“以用户为中心”。此发行版是为了满足贡献者的需求，而不是为了吸引尽可能多的用户。Arch 适用于乐于自己动手的用户，他们愿意花时间阅读文档，解决自己的问题。</p><h2 id=安装arch>安装arch</h2><h3 id=刻录启动盘>刻录启动盘</h3><p>本文根据<a href=https://wiki.archlinux.org/index.php/Installation_guide target=_blank rel="noopener noreffer">官方wiki安装指南</a>步骤进行，这个<a href=https://arch.icekylin.online/ target=_blank rel="noopener noreffer">教程</a>非常的不错，适合初学者。</p><p><a href=https://archlinux.org/download/ target=_blank rel="noopener noreffer">下载</a>iso文件(镜像网站可以选择<a href=https://mirrors.tuna.tsinghua.edu.cn/archlinux/iso/ target=_blank rel="noopener noreffer">清华源</a>)，制作U盘启动工具使用<a href=https://www.ventoy.net/ target=_blank rel="noopener noreffer">ventoy</a>。</p><p>将iso文件复制到u盘，重启进入bios设定从u盘启动。</p><h3 id=联网>联网</h3><p>首先联网前关闭自动选择镜像源服务防止自动更新镜像源</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>systemctl stop reflector
+</code></pre></td></tr></table></div></div><h4 id=有线>有线</h4><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>dhcpcd 
+</code></pre></td></tr></table></div></div><h4 id=无线>无线</h4><p>进入iwd模式</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>iwctl
+</code></pre></td></tr></table></div></div><p>查看你的网卡名字</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>device list
+</code></pre></td></tr></table></div></div><p>检查扫描网络，这里假设是wlan0，输入</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>station wlan0 get-networks
+</code></pre></td></tr></table></div></div><p>查看网络名字，假设wifi名字叫xxx</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>station wlan0 connect xxx
+</code></pre></td></tr></table></div></div><p>接着输入密码</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=nb>exit</span>
+</code></pre></td></tr></table></div></div><p>退出iwd模式，测试网络连通情况。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>ping qq.com
+</code></pre></td></tr></table></div></div><h3 id=分区>分区</h3><p>首先判断启动方式是BIOS或UEFI模式。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>ls /sys/firmware/efi/efivars
+</code></pre></td></tr></table></div></div><p>有输出则是UEFI模式，无则是BIOS模式。先说明我的分区配置，我共分了3个分区</p><table><thead><tr><th>磁盘</th><th>挂载位置</th><th>描述</th><th>大小</th></tr></thead><tbody><tr><td>/dev/nvme0n1p1</td><td>/boot</td><td>启动分区</td><td>700M</td></tr><tr><td>/dev/nvme0n1p2</td><td>/</td><td>根目录</td><td>200G</td></tr><tr><td></td><td>/home</td><td>用户目录</td><td>/dev/nvme0n1p2子卷</td></tr><tr><td>/dev/nvme0n1p3</td><td></td><td>虚拟内存</td><td>16G</td></tr></tbody></table><p><strong>(对于bios/gpt模式来说，还需要一个小分区，1MB就行，详情请看<a href=https://wiki.archlinux.org/title/GRUB#GUID_Partition_Table_%28GPT%29_specific_instructions target=_blank rel="noopener noreffer">wiki</a></strong>)</p><p>检查硬盘</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>lsblk <span class=c1>#查看所有磁盘</span>
+</code></pre></td></tr></table></div></div><p>分区工具用<strong>cfdisk</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>cfdisk /dev/nvme0n1  <span class=c1>#比如我的是/dev/nvme0n1</span>
+</code></pre></td></tr></table></div></div><p>格式化分区(分区格式使用btrfs，恢复快照容易，win10下可以直接使用<a href=https://github.com/maharmstone/btrfs target=_blank rel="noopener noreffer">工具</a>直接打开)</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>mkfs.fat -F32 /dev/nvme0n1p1 <span class=c1>#boot分区</span>
+mkfs.btrfs -L Arch /dev/nvme0n1p2　 <span class=c1>#根分区</span>
+mkswap /dev/nvme0n1p3 <span class=c1>#虚拟内存</span>
+</code></pre></td></tr></table></div></div><p>挂载根分区</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>mount -t btrfs /dev/nvme0n1p2 /mnt
+</code></pre></td></tr></table></div></div><p>创建子卷</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>btrfs subvolume create /mnt/@ <span class=c1># 创建根子卷</span>
+btrfs subvolume create /mnt/@home <span class=c1># 创建home子卷</span>
+</code></pre></td></tr></table></div></div><p>查看情况</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>btrfs subvolume list -p /mnt
+</code></pre></td></tr></table></div></div><p>卸载根分区</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>umount /mnt
+</code></pre></td></tr></table></div></div><p>挂载根分区</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>mount -t btrfs -o <span class=nv>subvol</span><span class=o>=</span>/ /dev/nvme0n1p2 /mnt <span class=c1># 挂载根分区</span>
+</code></pre></td></tr></table></div></div><p>挂载boot分区</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>mkdir /mnt/boot
+mount /dev/nvme0n1p1 /mnt/boot
+</code></pre></td></tr></table></div></div><p>挂载home分区</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>mkdir /mnt/home
+mount -t btrfs -o <span class=nv>subvol</span><span class=o>=</span>/@home,compress<span class=o>=</span>zstd /dev/nvme0n1p2 /mnt/home <span class=c1># 挂载 /home </span>
+swapon /dev/nvme0n1p3 <span class=c1># 挂载交换分区</span>
+</code></pre></td></tr></table></div></div><h3 id=安装系统>安装系统</h3><p>换源编辑<code>/etc/pacman.d/mirrorlist</code>，剪切下面这行复制到在文件最上面，具体vim命令为搜索/China，剪切dd，回到文件首部gg，粘贴p。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=nv>Server</span> <span class=o>=</span> https://mirrors.tuna.tsinghua.edu.cn/archlinux/<span class=nv>$repo</span>/os/<span class=nv>$arch</span>
+</code></pre></td></tr></table></div></div><p>安装基本系统</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>pacstrap /mnt base linux linux-firmware vim sudo
+</code></pre></td></tr></table></div></div><p>将磁盘写入启动项</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+cat /mnt/etc/fstab <span class=c1>#检查文件是否正确</span>
+</code></pre></td></tr></table></div></div><h3 id=配置系统>配置系统</h3><p>进入新安装的系统</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>arch-chroot /mnt
+</code></pre></td></tr></table></div></div><p>选择时区同步时间</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+hwclock --systohc
+</code></pre></td></tr></table></div></div><p>修改语言<code>/etc/locale.gen</code>，最上方添加两行。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>en_US.UTF-8 UTF-8
+zh_CN.UTF-8 UTF-8
+</code></pre></td></tr></table></div></div><p>执行 <code>locale-gen</code> 生成 locale 信息：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>locale-gen
+</code></pre></td></tr></table></div></div><p>修改语言 <code>/etc/locale.conf</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=nb>echo</span> <span class=s2>&#34;LANG=en_US.UTF-8&#34;</span>  &gt; /etc/locale.conf
+</code></pre></td></tr></table></div></div><p>不推荐此处设置中文locale，建议只在<code>~/.config/locale.conf</code>或者图形环境下设置中文环境。</p><p>修改hostname<code>/etc/hostname</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=nb>echo</span> <span class=s2>&#34;arch&#34;</span>  &gt; /etc/hostname
+</code></pre></td></tr></table></div></div><p>修改hosts文件<code>/etc/hosts</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-fallback data-lang=fallback>echo -e &#34;127.0.0.1   localhost \n ::1         localhost&#34;  &gt; /etc/hosts
+</code></pre></td></tr></table></div></div><p>修改root密码</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>passwd
+</code></pre></td></tr></table></div></div><h3 id=系统管理>系统管理</h3><p>新建普通用户gylt</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>useradd -m -G wheel gylt
+</code></pre></td></tr></table></div></div><p>设置密码</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>passwd gylt
+</code></pre></td></tr></table></div></div><p>设置sudo</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=nv>EDITOR</span><span class=o>=</span>vim visudo
+</code></pre></td></tr></table></div></div><p>取消注释开启sudo权限</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-diff data-lang=diff><span class=gd>- #%wheel ALL=(ALL) ALL NOPASSWD: ALL
+</span><span class=gd></span><span class=gi>+  %wheel ALL=(ALL) ALL NOPASSWD: ALL
+</span></code></pre></td></tr></table></div></div><h3 id=软件包管理>软件包管理</h3><p>为了下一次能正常使用，需要安装以下软件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>pacman -S networkmanager openssh network-manager-applet dhcpcd dialog wireless_tools wpa_supplicant os-prober mtools dosfstools ntfs-3g base-devel linux-headers reflector xdg-user-dirs git 
+pacman -S intel-ucode <span class=c1>#可选intel-ucode amd-ucode 开启微码更新</span>
+systemctl <span class=nb>enable</span> NetworkManager <span class=c1>#开机启动网络</span>
+systemctl <span class=nb>enable</span> sshd <span class=c1>#开机启动ssh</span>
+</code></pre></td></tr></table></div></div><p>编辑<code>/etc/pacman.conf</code>开启multilib(32位仓库)</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-diff data-lang=diff><span class=gd>- #Color
+</span><span class=gd></span><span class=gi>+  Color
+</span><span class=gi></span><span class=gd>- #[multilib]
+</span><span class=gd>- #Include = /etc/pacman.d/mirrorlist
+</span><span class=gd></span><span class=gi>+ [multilib]
+</span><span class=gi>+ Include = /etc/pacman.d/mirrorlist
+</span></code></pre></td></tr></table></div></div><p>文件末尾添加archlinuxcn仓库</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-diff data-lang=diff>[archlinuxcn]
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+</code></pre></td></tr></table></div></div><p>安装archlinuxcn密钥</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>pacman -Syy archlinuxcn-keyring
+</code></pre></td></tr></table></div></div><p>安装yay</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>pacman -S yay
+</code></pre></td></tr></table></div></div><h3 id=安装引导程序>安装引导程序</h3><p>引导程序有很多，最通用的应该是grub，可以支持BIOS和UEFI模式，好看的rEFInd。</p><p>由于现在的新设备一般是UEFI，rEFInd不支持bios模式，我只在虚拟机上遇到过bios模式所以我用rEFInd。</p><h4 id=refind>refind</h4><p>安装软件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>pacman -S refind
+</code></pre></td></tr></table></div></div><p>安装到boot分区</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>refind-install
+</code></pre></td></tr></table></div></div><p>在chroot环境下内核文件<code>/boot/refind_linux.conf</code>的内核参数是chroot环境下的内核，所以需要手动修改</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=s2>&#34;Boot with standard options&#34;</span>  <span class=s2>&#34;root=/dev/nvme0n1p2 rw rootflags=subvol=@ loglevel=5 &#34;</span>
+<span class=s2>&#34;Boot to single-user mode&#34;</span>    <span class=s2>&#34;root=/dev/nvme0n1p2
+</span><span class=s2>rw rootflags=subvol=@ loglevel=5 single&#34;</span>
+<span class=s2>&#34;Boot with minimal options&#34;</span>   <span class=s2>&#34;ro root=/dev/nvme0n1p2&#34;</span>
+</code></pre></td></tr></table></div></div><p>如果以后没有修改分区的可能，可以直接修改为路径，否则还是使用<code>root=UUID=</code>，使用<code>lsblk -o name,mountpoint,size,uuid</code>查看。修改完成后就可以重启了。</p><h4 id=grub>grub</h4><p>由于硬件的不同，安装方式也不同，下面分情况安装。</p><p>bios</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>pacman -S grub
+grub-install /dev/nvme0n1  <span class=c1>#/dev/nvme0n1是磁盘，不是磁盘分区</span>
+</code></pre></td></tr></table></div></div><p>UEFI</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>pacman -S grub efibootmgr 
+grub-install --target<span class=o>=</span>x86_64-efi --efi-directory<span class=o>=</span>/boot --bootloader-id<span class=o>=</span>Arch
+</code></pre></td></tr></table></div></div><p>到这步骤都相同了，都是将信息写入到boot分区下的grub.cfg文件中。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre></td></tr></table></div></div><p><a href=https://www.gnome-look.org/browse/cat/109/ord/latest/ target=_blank rel="noopener noreffer">下载</a>自己喜欢的主题包，比如我选择的是<a href=https://www.gnome-look.org/p/1009236/ target=_blank rel="noopener noreffer">Vimix</a>。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>tar -Jxf Vimix-1080p.tar.xz <span class=c1>#解压</span>
+</code></pre></td></tr></table></div></div><p>安装启用</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=nb>cd</span> Vimix-1080p
+sudo chmod +x ./install.sh
+sudo ./install.sh
+</code></pre></td></tr></table></div></div><h3 id=退出安装>退出安装</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=nb>exit</span>
+umount -a
+reboot
+</code></pre></td></tr></table></div></div><p><a href=https://wiki.archlinux.org/title/General_recommendations target=_blank rel="noopener noreffer">官方wiki建议</a></p><h2 id=桌面>桌面</h2><h3 id=dwm>dwm</h3><p>安装前配置,最基础的安装</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo pacman -S linux-zen linux-zen-headers <span class=c1>#更换zen内核</span>
+sudo pacman -S xorg-server xorg-xinit xorg-apps <span class=c1># xorg</span>
+sudo pacman -S noto-fonts noto-fonts-cjk ttf-monaco ttf-font-awesome ttf-hack xorg-fonts-misc ttf-nerd-fonts-symbols-2048-em-mono <span class=c1>#字体</span>
+</code></pre></td></tr></table></div></div><p>软件介绍</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>alacritty st <span class=c1>#终端</span>
+rofi <span class=c1>#启动菜单</span>
+nnn <span class=c1>#终端文件浏览器</span>
+lxsession-gtk3 <span class=c1>#授权管理</span>
+xautolock <span class=c1># 自动锁屏</span>
+
+light <span class=c1>#亮度调节</span>
+pulsemixer pamixer <span class=c1>#音量</span>
+dunst <span class=c1>#通知</span>
+sddm <span class=c1>#登录管理</span>
+
+mpd mpc ncmpcpp <span class=c1>#音乐</span>
+calcurse <span class=c1>#代办事项</span>
+picom-git <span class=c1>#透明</span>
+
+lxappearance-gtk3  <span class=c1>#主题配置</span>
+qt5ct qt5-styleplugins <span class=c1>#qt5配置</span>
+i3lock-color <span class=c1>#锁屏</span>
+variety feh <span class=c1>#随机壁纸</span>
+
+xmenu <span class=c1>#简单的菜单脚本,手动编译</span>
+network-manager-applet 托盘网络
+redshift-gtk-git <span class=c1>#红移护眼</span>
+copyq <span class=c1>#剪切板</span>
+kdeconnect <span class=c1>#连接手机</span>
+downgrade <span class=c1>#降级软件</span>
+</code></pre></td></tr></table></div></div><p>一键安装</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo pacman -S alacritty-git rofi light pulsemixer pamixer dunst mpd <span class=se>\
+</span><span class=se></span>mpc ncmpcpp lxappearance-gtk3 qt5ct i3lock-color variety feh <span class=se>\
+</span><span class=se></span>network-manager-applet copyq  kdeconnect dolphin lxsession-gtk3 <span class=se>\
+</span><span class=se></span>downgrade
+
+yay -S  picom-git qt5-styleplugins redshift-gtk-git nnn-nerd
+</code></pre></td></tr></table></div></div><p>我的dwm编译文件在我的<a href=https://github.com/gylt37/dwm-gather target=_blank rel="noopener noreffer">github</a>[[dwm的配置]]</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>git clone https://github.com/gylt37/dwm-config
+<span class=nb>cd</span> dwm-config/dwm <span class=o>&amp;&amp;</span> sudo make clean install
+<span class=nb>cd</span> ../dwmblocks <span class=o>&amp;&amp;</span> sudo make clean install
+<span class=nb>cd</span> ../st <span class=o>&amp;&amp;</span> sudo make clean install
+</code></pre></td></tr></table></div></div><p>ps:在dwm环境下,某些java应用界面可能显示不正确,设置环境变量<code>_JAVA_AWT_WM_NONREPARENTING=1</code></p><h4 id=sddm>sddm</h4><p>启动图形环境有两种方式,第一是使用登录管理器</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo pacman -S sddm
+</code></pre></td></tr></table></div></div><p>启动sddm服务</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo systemctl <span class=nb>enable</span> -now sddm
+</code></pre></td></tr></table></div></div><p>生成sddm配置文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo sddm --example-config &gt; /etc/sddm.conf
+</code></pre></td></tr></table></div></div><p>安装主题<code>sddm-deepin</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>yay -S qt5-graphicaleffects <span class=c1>#安装依赖</span>
+git clone https://github.com/Match-Yang/sddm-deepin
+<span class=nb>cd</span> sddm-deepin
+sudo ./install.sh
+</code></pre></td></tr></table></div></div><p>头像位置<code>/usr/share/sddm/faces/</code>,命名格式<code>用户名.face.icon</code></p><p>测试一下</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sddm-greeter --test-mode --theme /usr/share/sddm/themes/deepin
+</code></pre></td></tr></table></div></div><p>能显示成功的话修改<code>/etc/sddm.conf</code>修改下面几行</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-ini data-lang=ini><span class=na>InputMethod</span><span class=o>=</span> <span class=s>#设置为空,</span>
+<span class=na>Numlock</span><span class=o>=</span><span class=s>on #开机启用数字小键盘</span>
+<span class=na>Current</span><span class=o>=</span><span class=s>deepin </span>
+<span class=na>CursorTheme</span><span class=o>=</span><span class=s>DeppinDark-cursors #鼠标主题</span>
+<span class=c1>#DisplayStopCommand  #禁用这个是因为显卡管理工具</span>
+<span class=c1>#DisplayCommand #禁用这个是因为显卡管理工具</span>
+</code></pre></td></tr></table></div></div><h4 id=startx>startx</h4><p>第二种启动方式适合开机自动登录后自动启动，编辑<code>~/.xinitrc</code>文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+xrdb ~/.Xresources
+<span class=nb>source</span> ~/.xprofile
+numlockx  <span class=c1>#自动启动时开启小键盘锁，需安装numlockx </span>
+<span class=nb>exec</span> dwm
+</code></pre></td></tr></table></div></div><p>这个时候就可以使用startx启动dwm了。如果想要登录用户后自动开启环境，在<code>~/.bash_profile</code>添加</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=k>if</span> <span class=o>[</span> -z <span class=s2>&#34;</span><span class=si>${</span><span class=nv>DISPLAY</span><span class=si>}</span><span class=s2>&#34;</span> <span class=o>]</span> <span class=o>&amp;&amp;</span> <span class=o>[</span> <span class=s2>&#34;</span><span class=si>${</span><span class=nv>XDG_VTNR</span><span class=si>}</span><span class=s2>&#34;</span> -eq <span class=m>1</span> <span class=o>]</span><span class=p>;</span> <span class=k>then</span>
+    <span class=nb>exec</span> startx
+<span class=k>fi</span>
+</code></pre></td></tr></table></div></div><p>开机自动登录用户,新建文件<code>/etc/systemd/system/getty@tty1.service.d/autologin.conf</code>,填入下面内容</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-ini data-lang=ini><span class=k>[Service]</span>
+<span class=na>ExecStart</span><span class=o>=</span>
+<span class=na>ExecStart</span><span class=o>=</span><span class=s>-/sbin/agetty -o &#39;-p -f -- \\u&#39; --noclear --autologin (用户名) %I $TERM</span>
+</code></pre></td></tr></table></div></div><p>开启服务</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>systemctl <span class=nb>enable</span> getty@tty1
+</code></pre></td></tr></table></div></div><p>这样就完成开机自动登录到桌面环境了，省去很多麻烦。</p><h3 id=主题配置>主题配置</h3><p>gtk主题<code>arc-gtk-theme</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo pacman -S arc-gtk-theme
+</code></pre></td></tr></table></div></div><p>鼠标主题<a href=https://github.com/yeyushengfan258/DeepinV20-dark-cursors target=_blank rel="noopener noreffer"><code>DeepinV20-dark-cursors</code></a></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>git clone https://github.com/yeyushengfan258/DeepinV20-dark-cursors
+<span class=nb>cd</span> DeepinV20-dark-cursors
+sudo ./install.sh <span class=c1>#全局安装</span>
+</code></pre></td></tr></table></div></div><p>图标主题<code>vimix-icon-theme</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>git clone https://github.com/vinceliuice/vimix-icon-theme
+<span class=nb>cd</span> vimix-icon-theme
+cp src/colors/color-Doder/* src/scalable/places/ <span class=c1>#我喜欢蓝色的文件图标</span>
+sudo ./install.sh <span class=c1>#全局安装</span>
+</code></pre></td></tr></table></div></div><p>安装图形化工具<code>lxappearance-gtk3</code>调整gtk主题，调整后会自动生成两个文件<code>~/.config/gtk-3.0/settings.ini</code>和<code>~/.gtkrc-2.0</code>。</p><p>安装<code>qt5ct</code>和<code>qt5-styleplugins</code>配置qt主题与gtk主题一样。</p><p>设置环境变量<code>QT_QPA_PLATFORMTHEME=qt5ct</code>。</p><p>安装一些主题解决打开部分应用终端会出现某些警告</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo pacman -S gtk-engine-murrine gnome-themes-extra
+</code></pre></td></tr></table></div></div><p>警告如下面所示。</p><pre><code>Gtk-WARNING **: 19:27:02.206: 无法在模块路径中找到主题引擎：“murrine”，
+</code></pre><h3 id=refind美化>refind美化</h3><p>为了能更好的设置启动项，手动编辑<code>/boot/EFI/refind/refind.conf</code>找到相应的行修改</p><pre><code>timeout 4
+
+dont_scan_files /vmlinuz-linux-zen  /vmlinuz-linux #屏蔽自动找到的
+
+#手动编辑启动项，确定能正常启动，再屏蔽上面的启动项
+menuentry &quot;Arch Linux&quot; {
+    icon     /EFI/refind/themes/rEFInd-minimal/icons/os_arch.png
+    volume   &quot;Arch Linux&quot;
+    loader   /vmlinuz-linux-zen
+    initrd   /initramfs-linux-zen.img
+    options  &quot;root=UUID=02db75d5-6b44-47c8-9432-e2a1b7440e4d rw rootflags=subvol=@ add_efi_memmap initrd=\intel-ucode.img nvidia-drm.modeset=1&quot;
+    submenuentry &quot;linux&quot; {
+        loader  /vmlinuz-linux
+        initrd /initramfs-linux.img
+    }
+    submenuentry &quot;linux-fallback&quot; {
+        loader  /vmlinuz-linux
+        initrd /initramfs-linux-fallback.img
+    }
+    submenuentry &quot;linux-zen-fallback&quot; {
+        loader  /vmlinuz-linux-zen
+        initrd /initramfs-linux-zen-fallback.img
+    }
+}
+</code></pre><p>使用主题包美化</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>mkdir /boot/EFI/refind/themes
+<span class=nb>cd</span> /boot/EFI/refind/themes
+git clone https://github.com/EvanPurkhiser/rEFInd-minimal
+</code></pre></td></tr></table></div></div><p>在<code>/boot/EFI/refind/refind.conf</code>文件最下面添加一行</p><pre><code>include themes/rEFInd-minimal/theme.conf
+</code></pre><h3 id=字体>字体</h3><p>先贴上我参考的archwiki的教程和其他人的教程</p><ol><li><a href=https://wiki.archlinux.org/index.php/Localization/Simplified_Chinese_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29 target=_blank rel="noopener noreffer">简中环境配置</a></li><li><a href=https://wiki.archlinux.org/title/Font_configuration target=_blank rel="noopener noreffer">Font 配置文件介绍</a></li><li><a href=https://wiki.archlinux.org/title/Font_Configuration_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29/Chinese_%28%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87%29 title=https://wiki.archlinux.org/title/Font_Configuration_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)/Chinese_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87) target=_blank rel="noopener noreffer">archwiki的中文推荐配置</a></li><li><a href=https://szclsya.me/zh-cn/posts/fonts/linux-config-guide/ target=_blank rel="noopener noreffer">Linux 下的字体调校指南</a></li><li><a href=https://catcat.cc/post/2021-03-07/ target=_blank rel="noopener noreffer">用 fontconfig 治理 Linux 中的字体</a></li></ol><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo pacman -S noto-fonts-cjk noto-fonts-emoji ttf-fira-code ttf-jetbrains-mono <span class=se>\
+</span><span class=se></span>	ttf-monaco ttf-dejavu ttf-font-awesome ttf-hack ttf-liberation ttf-monaco <span class=se>\ </span>
+	ttf-nerd-fonts-symbols-2048-em-mono ttf-roboto-mono
+
+sudo pacman -S ttf-lxgw-wenkai ttf-lxgw-wenkai-mono <span class=c1># 霞鹜文楷</span>
+</code></pre></td></tr></table></div></div><p>上面的字体安装好后的，中文字体应该不会出现方块字，极个别的字体会显示方块字，需要去下载<a href=https://fgwang.blogspot.com/ target=_blank rel="noopener noreffer">全宋体</a>，<a href=http://cheonhyeong.com/Traditional/download.html target=_blank rel="noopener noreffer">天珩字庫</a>，<a href=http://www.guoxuedashi.net/zidian/bujian/KaiXinSong.php target=_blank rel="noopener noreffer">开心宋体</a>，<a href=http://fonts.jp/hanazono/ target=_blank rel="noopener noreffer">花园明朝</a>，四个字体随便选择一个就行，复制到<code>~/.local/share/font</code>中就行。
+<code>～/.config/fontconfig/fonts.conf</code>去我的donfit里找。</p><h2 id=硬件>硬件</h2><h3 id=快照>快照</h3><p>由于使用Btrf格式，所以使用snapper管理快照。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo pacman -S snapper snapper-gui-git
+</code></pre></td></tr></table></div></div><p>创建配置文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>snapper -c root create-config /
+</code></pre></td></tr></table></div></div><p>由于Btrf格式下，分区较多会导致删除快照时cpu占用较高，所以需要减少自动快照数量或者关闭自动快照只使用手动快照。编辑root配置文件<code>sudo vim /etc/snapper/configs/root</code>，</p><pre><code># 设置普通用户权限
+ALLOW_USERS=&quot;gylt&quot;
+# 关闭自动创建快照
+TIMELINE_CREATE=&quot;no&quot;
+# 保留3个每日快照，1个每周快照，1个每月快照
+TIMELINE_MIN_AGE=&quot;1800&quot;
+TIMELINE_LIMIT_HOURLY=&quot;0&quot;
+TIMELINE_LIMIT_DAILY=&quot;3&quot;
+TIMELINE_LIMIT_WEEKLY=&quot;1&quot;
+TIMELINE_LIMIT_MONTHLY=&quot;1&quot;
+TIMELINE_LIMIT_YEARLY=&quot;0&quot;
+</code></pre><p>添加权限读取/.snapshots</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>chmod a+rx .snapshots
+chown :gylt .snapshots
+</code></pre></td></tr></table></div></div><h3 id=更新>更新</h3><p>添加pacman hooks安装软件时会更新状态栏</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo mkdir /etc/pacman.d/hooks/
+sudo vim /etc/pacman.d/hooks/update_dwmblocks.hook
+</code></pre></td></tr></table></div></div><p>内容如下，更新时自动发信号6给dwmblocks更新状态栏</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-ini data-lang=ini><span class=k>[Trigger]</span>
+<span class=na>Operation</span> <span class=o>=</span> <span class=s>Upgrade</span>
+<span class=na>Type</span> <span class=o>=</span> <span class=s>Package</span>
+<span class=na>Target</span> <span class=o>=</span> <span class=s>*</span>
+
+<span class=k>[Action]</span>
+<span class=na>Description</span> <span class=o>=</span> <span class=s>Dwmblocks</span>
+<span class=na>When</span> <span class=o>=</span> <span class=s>PostTransaction</span>
+<span class=na>Exec</span> <span class=o>=</span> <span class=s>/usr/bin/pkill -RTMIN+6 dwmblocks</span>
+</code></pre></td></tr></table></div></div><p>自动更新镜像源，编辑<code>/etc/xdg/reflector/reflector.conf</code>，修改第21行为China，第24行为50个。</p><pre><code>--country China
+--latest 50
+</code></pre><p>可以手动更新最快的镜像源sssssssss事实上s,,asda,</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>systemctl start reflector
+</code></pre></td></tr></table></div></div><p>启动定时器（默认为每周更新一次，文件位置<code>/usr/lib/systemd/system/reflector.timer</code>）</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>systemctl enbale reflector.timer 
+</code></pre></td></tr></table></div></div><p>也可以手动启动</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>systemctl start reflector.timer 
+</code></pre></td></tr></table></div></div><h3 id=电源>电源</h3><p>安装tlp</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>yay -S tlp tlpui
+systemctl <span class=nb>enable</span> tlp.service
+systemctl mask systemd-rfkill.socket systemd-rfkill.service <span class=c1>#关闭冲突的服务</span>
+</code></pre></td></tr></table></div></div><p>修改 <code>/etc/tlp.conf</code> 配置文件：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-diff data-lang=diff><span class=gd>- SATA_LINKPWR_ON_BAT=&#34;min_performance&#34;
+</span><span class=gd></span><span class=gi>+ SATA_LINKPWR_ON_BAT=&#34;max_performance&#34;
+</span></code></pre></td></tr></table></div></div><h3 id=应用>应用</h3><p>使用handlr代替默认的xdg-open</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>yay -S handlr
+</code></pre></td></tr></table></div></div><p>使用命令设置默认终端应用，应用列表在<code>/home/gylt/.config/mimeapps.list</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>handlr <span class=nb>set</span> x-scheme-handler/terminal Alacritty.desktop
+</code></pre></td></tr></table></div></div><h3 id=睡眠>睡眠</h3><p>睡眠前锁屏编辑<code>/etc/systemd/system/sleep@.service</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-ini data-lang=ini><span class=k>[Unit]</span>
+<span class=na>Description</span><span class=o>=</span><span class=s>Lock the screen</span>
+<span class=na>Before</span><span class=o>=</span><span class=s>sleep.target</span>
+ 
+<span class=k>[Service]</span>
+<span class=na>User</span><span class=o>=</span><span class=s>%I</span>
+<span class=na>Type</span><span class=o>=</span><span class=s>forking</span>
+<span class=na>Environment</span><span class=o>=</span><span class=s>DISPLAY=:0</span>
+<span class=na>ExecStart</span><span class=o>=</span><span class=s>/usr/local/share/dwm/lock.sh</span>
+ 
+<span class=k>[Install]</span>
+<span class=na>WantedBy</span><span class=o>=</span><span class=s>sleep.target</span>
+</code></pre></td></tr></table></div></div><p>lock脚本使用dwm的锁屏脚本。使用下面命令测试一次。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>systemctl <span class=nb>enable</span> --now sleep@gylt
+</code></pre></td></tr></table></div></div><h3 id=休眠>休眠</h3><p>查看休眠分区的uuid</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>lsblk -o name,mountpoint,size,uuid
+</code></pre></td></tr></table></div></div><p>启动项中添加<code>resume=UUID=5707862f-02f9-406c-bbe0-7d39ff33cd57</code></p><p>编辑<code>/etc/mkinitcpio.conf</code>,在HOOK行中添加<code>resume</code>（至少在base udev后）</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-diff data-lang=diff><span class=gd>- HOOKS=(base udev autodetect modconf block filesystems keyboard fsck)
+</span><span class=gd></span><span class=gi>+ HOOKS=(base udev autodetect modconf block resume filesystems keyboard fsck)
+</span></code></pre></td></tr></table></div></div><p>重新生成initramfs镜像</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo mkinitcpio -P
+</code></pre></td></tr></table></div></div><p>编辑<code>/etc/systemd/logind.conf</code> ，设置笔记本盖上盖子睡眠，按下电源键休眠，取消注释：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-diff data-lang=diff><span class=gd>- #HandlePowerKey=poweroff
+</span><span class=gd></span><span class=gi>+ HandlePowerKey=hibernate
+</span><span class=gi></span><span class=gd>- #HandleLidSwitch=suspend
+</span><span class=gd></span><span class=gi>+ HandleLidSwitch=suspend
+</span></code></pre></td></tr></table></div></div><p>执行以下命令使其立即生效：</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>systemctl restart systemd-logind
+</code></pre></td></tr></table></div></div><h3 id=亮度>亮度</h3><p>普通用户无法用<strong>light</strong>命令修改亮度，需要将用户gylt加入video组</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>usermod -a -G video gylt 
+</code></pre></td></tr></table></div></div><h3 id=磁盘>磁盘</h3><p>如果想要linux能准确的读取能NTFS格式的数据，一定要关闭win10的快速启动，用下面的命令来清除win休眠的数据（危险命令）</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo ntfsfix /dev/sdb1 
+</code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>lsblk <span class=c1>#我挂载的为/dev/sdb1</span>
+sudo mkdir /data  <span class=c1>#创建一个空目录用于挂载</span>
+id <span class=c1>#查看一下当前用户的id,我的为id=1000(gylt) 组id=1000(gylt)</span>
+sudo mount /dev/sdb1 /data -o <span class=nv>uid</span><span class=o>=</span>1000,gid<span class=o>=</span><span class=m>1000</span>  <span class=c1>#挂载为当前用户的</span>
+sudo blkid　<span class=c1>#查看分区的uuid,比如我的是UUID=&#34;C8B874BFB874AE16&#34;</span>
+</code></pre></td></tr></table></div></div><p>在<code>/etc/fstab</code>添加一行</p><pre><code>UUID=C8B874BFB874AE16 /data ntfs uid=1000,gid=1000 0 0
+</code></pre><h3 id=显卡>显卡</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo pacman -S nvidia-dkms nvidia-utils lib32-nvidia-utils lib32-nvidia-libgl <span class=se>\
+</span><span class=se></span>	acpi_call nvidia-prime nvidia-settings 
+nvidia-settings --load-config-only <span class=c1>#登录时载入设置</span>
+</code></pre></td></tr></table></div></div><p>安装<a href=https://github.com/Askannz/optimus-manager target=_blank rel="noopener noreffer">optimus-manager</a>来设置显卡切换</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span><span class=lnt>9
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo pacman -S optimus-manager 
+sudo cp /usr/share/optimus-manager.conf /etc/optimus-manager/optimus-manager.conf
+sudo vim /etc/optimus-manager/optimus-manager.conf
+
+sudo systemctl <span class=nb>enable</span> --now optimus-manager
+
+optimus-manager --switch nvidia <span class=c1>#切换为英伟达驱动</span>
+optimus-manager --switch nvidia  <span class=c1>#切换为核显英特尔驱动</span>
+optimus-manager --switch hybrid <span class=c1>#切换iGPU,用prime-run参数来开启nvidia驱动(需安装nvidia-prime) </span>
+</code></pre></td></tr></table></div></div><h3 id=时间>时间</h3><p>由于linux将硬件时钟当成UTC时间，而windows将硬件时钟当成本地时间。所以双系统切换会导致时间不同步，修改方法两种方法推荐第一种。</p><p>linux将硬件时间当成本地时间。linux下执行</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>timedatectl set-local-rtc <span class=m>1</span>
+sudo hwclock --systohc
+</code></pre></td></tr></table></div></div><p>用<code>timedatectl</code>查看状态</p><p>可以让win使用utc,管理员cmd运行</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-powershell data-lang=powershell><span class=n>Reg</span> <span class=n>add</span> <span class=n>HKLM</span><span class=p>\</span><span class=n>SYSTEM</span><span class=p>\</span><span class=n>CurrentControlSet</span><span class=p>\</span><span class=n>Control</span><span class=p>\</span><span class=n>TimeZoneInformation</span> <span class=p>/</span><span class=n>v</span> <span class=n>RealTimeIsUniversal</span> <span class=p>/</span><span class=n>t</span> <span class=n>REG_DWORD</span> <span class=p>/</span><span class=n>d</span> <span class=n>1</span>
+</code></pre></td></tr></table></div></div><h3 id=蓝牙>蓝牙</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo pacman -S bluez bluez-utils pulseaudio-bluetooth
+systemctl <span class=nb>enable</span> --now bluetooth
+yay -S blueman  <span class=c1>#图形配置工具</span>
+</code></pre></td></tr></table></div></div><h3 id=鼠标>鼠标</h3><p>禁用鼠标加速，编辑<code>/etc/X11/xorg.conf.d/50-mouse-acceleration.conf</code></p><pre><code>Section &quot;InputClass&quot;
+    Identifier &quot;My Mouse&quot;
+    MatchIsPointer &quot;yes&quot;
+    Option &quot;AccelerationProfile&quot; &quot;-1&quot;
+    Option &quot;AccelerationScheme&quot; &quot;none&quot;
+    Option &quot;AccelSpeed&quot; &quot;-1&quot;
+EndSection
+</code></pre><h3 id=触摸板>触摸板</h3><pre><code>yay -S xf86-input-synaptics
+cp /usr/share/X11/xorg.conf.d/70-synaptics.conf /etc/X11/xorg.conf.d/
+</code></pre><p>我的如下</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-ini data-lang=ini><span class=na>Section &#34;InputClass&#34;</span>
+    <span class=na>Identifier &#34;touchpad&#34;</span>
+    <span class=na>Driver &#34;synaptics&#34;</span>
+    <span class=na>MatchIsTouchpad &#34;on&#34;</span>
+        <span class=na>Option &#34;TapButton1&#34; &#34;1&#34;</span>
+        <span class=na>Option &#34;TapButton2&#34; &#34;3&#34;</span>
+        <span class=na>Option &#34;TapButton3&#34; &#34;2&#34;</span>
+        <span class=na>Option &#34;VertEdgeScroll&#34; &#34;on&#34;</span>
+        <span class=na>Option &#34;VertTwoFingerScroll&#34; &#34;on&#34;</span>
+        <span class=na>Option &#34;HorizEdgeScroll&#34; &#34;on&#34;</span>
+<span class=na>EndSection</span>
+</code></pre></td></tr></table></div></div><h3 id=键盘>键盘</h3><p>将Esc和Caps_Lock键替换可以使用<code>xmodmap ~/.Xmodmap</code>，<code>~/.Xmodmap</code>的内容如下</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-ini data-lang=ini><span class=na>remove Lock</span> <span class=o>=</span> <span class=s>Caps_Lock</span>
+<span class=na>keysym Caps_Lock</span> <span class=o>=</span> <span class=s>Escape</span>
+<span class=na>keysym Escape</span> <span class=o>=</span> <span class=s>Caps_Lock</span>
+<span class=na>add Lock</span> <span class=o>=</span> <span class=s>Caps_Lock</span>
+</code></pre></td></tr></table></div></div><p>但会因为fcitx5取消映射，而且Wayland不支持<code>xmodmap</code>，所以还是修改xkb_keycodes文件
+<code>/usr/share/X11/xkb/keycodes/evdev</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-diff data-lang=diff><span class=gd>- &lt;CAPS&gt; = 66;
+</span><span class=gd></span><span class=gi>+ &lt;CAPS&gt; = 9;
+</span><span class=gi></span>
+<span class=gd>- &lt;ESC&gt; = 9;
+</span><span class=gd></span><span class=gi>+ &lt;ESC&gt; = 66;
+</span></code></pre></td></tr></table></div></div><h3 id=屏幕>屏幕</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>yay -S arandr
+</code></pre></td></tr></table></div></div><p>启动UI界面后修改完毕后，保存参数，将参数加入到<code>/home/gylt/.xprofile</code>。</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=k>if</span> <span class=o>[</span> <span class=k>$(</span>xrandr <span class=p>|</span> grep <span class=s1>&#39; connected&#39;</span> <span class=p>|</span> wc -l<span class=k>)</span> <span class=o>==</span> <span class=m>2</span> <span class=o>]</span>
+<span class=k>then</span>
+    <span class=k>$(</span>xrandr --output eDP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal <span class=k>)</span>
+<span class=k>else</span>
+    <span class=k>$(</span>xrandr --auto<span class=k>)</span>
+<span class=k>fi</span>
+</code></pre></td></tr></table></div></div><h3 id=关机>关机</h3><p>因为本人遇到的某些硬件原因，关机时提示<code>A stop job is running for...(1m30s)</code>，导致关机有时很慢。</p><p>编辑<code>/etc/systemd/system.conf</code>修改下面的,等待8秒后关机.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-ini data-lang=ini><span class=na>DefaultTimeoutStopSec</span> <span class=o>=</span> <span class=s>8s</span>
+</code></pre></td></tr></table></div></div><p>刷新启用<code>sudo systemctl daemon-reload</code>，使用<code>journalctl -p5</code>排查故障。</p><h3 id=启动项>启动项</h3><p>系统有多余的启动项可以使用下面的命令删除</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo efibootmgr  <span class=c1># 查看多余的编号,格式000X </span>
+
+sudo efibootmgr -b <span class=m>0003</span> -B  <span class=c1># 删除0003</span>
+</code></pre></td></tr></table></div></div><h2 id=桌面配置>桌面配置</h2><h3 id=alacritty>alacritty</h3><p>默认不会自动生成配置文件,需要自己手动复制</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>mkdir -p ~/.config/alacritty/
+cp /usr/share/doc/alacritty/example/alacritty.yml ~/.config/alacritty/alacritty.yml
+</code></pre></td></tr></table></div></div><h3 id=rofi>rofi</h3><p>用下面命令生成配置文件</p><pre><code>mkdir -p ~/.config/rofi
+rofi -dump-config &gt; ~/.config/rofi/config.rosi
+</code></pre><p>主题文件到<a href=https://github.com/davatorium/rofi-themes/ target=_blank rel="noopener noreffer">这里</a>选择，我认为<a href=https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/cloud.rasi target=_blank rel="noopener noreffer">这个</a>不错。</p><p>下载文件后,记录文件位置,添加一行<code>@import "文件位置"</code>到<code>~/.config/rofi/config.rasi</code>文件末尾</p><h3 id=dunst>dunst</h3><p>复制默认配置文件</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>mkdir ~/.config/dunst/
+cp /etc/dunst/dunstrc ~/.config/dunst/dunstrc
+</code></pre></td></tr></table></div></div><h3 id=红移>红移</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>wget https://raw.githubusercontent.com/jonls/redshift/master/redshift.conf.sample
+mkdir ~/.config/redshift
+mv redshift.conf.sample ~/.config/redshift/redshift.conf
+</code></pre></td></tr></table></div></div><h3 id=picom>picom</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>yay -S picom-git
+</code></pre></td></tr></table></div></div><p>复制配置文件到<code>~/.config/picom/picom.conf</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>cp /etc/xdg/picom.conf.example ~/.config/picom/picom.conf
+</code></pre></td></tr></table></div></div><p>根据注释,自行修改配置文件</p><p>某些软件不需要透明,将名字添加到 shadow-exclude = []如下所示</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-ini data-lang=ini><span class=na>shadow-exclude</span> <span class=o>=</span> <span class=s>[
+</span><span class=s>  &#34;name *= &#39;Fcitx5&#39;&#34;,
+</span><span class=s>  &#34;class_g = &#39;Conky&#39;&#34;,</span>
+<span class=na>]</span>
+</code></pre></td></tr></table></div></div><h3 id=声音>声音</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>yay -S alsa-utils 
+alsamixer <span class=c1>#解除静音</span>
+amixer sset Master unmute
+amixer sset Speaker unmute
+amixer sset Headphone unmute
+</code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo pacman -S mpd mpc ncmpcpp <span class=c1>#音乐</span>
+</code></pre></td></tr></table></div></div><p>将mpd添加到audio组</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo gpasswd -a mpd audio
+mkdir -p ~/.config/mpd/
+</code></pre></td></tr></table></div></div><p>首先在普通用户下创建目录：<code>mkdir ~/.ncmpcpp</code>
+编辑配置<code>vim ~/.ncmpcpp/config</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>mpc update
+mpc play
+mpc listall <span class=p>|</span> mpc add
+</code></pre></td></tr></table></div></div><h3 id=代理>代理</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>yay -S v2ray v2raya
+</code></pre></td></tr></table></div></div><p>安装好后开启服务</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>systemctl <span class=nb>enable</span> --now v2raya.service
+</code></pre></td></tr></table></div></div><p>打开127.0.0.1:2017，透明代理配置如<a href=https://v2raya.org/docs/prologue/quick-start/#%E9%80%8F%E6%98%8E%E4%BB%A3%E7%90%86 target=_blank rel="noopener noreffer">教程</a>中图所示。</p><p>终端代理</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo pacman -S proxychains-ng
+</code></pre></td></tr></table></div></div><p>修改配置文件<code>/etc/proxychains.conf</code>末尾添加</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-ini data-lang=ini><span class=na>socks5 127.0.0.1 20170</span>
+<span class=na>http   127.0.0.1 20171</span>
+</code></pre></td></tr></table></div></div><p>启用代理前面加<code>proxychains</code> 如下</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>proxychains curl -i www.google.com
+</code></pre></td></tr></table></div></div><p>网络浏览器用<code>google-chrome</code>时用代理插件SwitchyOmega，谷歌浏览器用下面这个命令来临时使用代理</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>/usr/bin/google-chrome-stable  --proxy-server<span class=o>=</span>socks5://127.0.0.1:20170
+</code></pre></td></tr></table></div></div><p>同步数据后,配置SwitchyOmega规则列表，选择AutoProxy，规则列表网址填写<code>https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</code>,之后点击立即更新情景模式</p><h3 id=rime>Rime</h3><p><a href=https://www.fkxxyz.com/d/ssfconv/ target=_blank rel="noopener noreffer">fcitx安装搜狗皮肤</a></p><p><a href=https://zhuanlan.zhihu.com/p/287774005 target=_blank rel="noopener noreffer">词库转换</a></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash><span class=c1># 安装小企鹅输入法</span>
+sudo pacman -S fcitx5 fcitx5-qt fcitx5-gtk fcitx5-configtool
+<span class=c1># 安装Rime</span>
+sudo pacman -S fcitx5-rime rime-emoji
+</code></pre></td></tr></table></div></div><p>安装fcitx5-rime会在/usr/share/rime-data/文件夹中安装：明月拼音，地球拼音，仓颉，五笔画等输入方案。其他的输入方案请看[[Rime配置]]。下载配置方案解压到<code>~/.local/share/fcitx5/rime/</code>下重新部署即可。</p><h2 id=安装常用软件>安装常用软件</h2><h3 id=虚拟机>虚拟机</h3><p>虚拟机使用qemu/kvm方案</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo pacman -S virt-manager qemu vde2 ebtables dnsmasq bridge-utils openbsd-netcat edk2-ovmf
+sudo systemctl <span class=nb>enable</span> libvirtd.service
+sudo systemctl start libvirtd.service
+</code></pre></td></tr></table></div></div><p>编辑<code>/etc/libvirt/libvirtd.conf</code></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-diff data-lang=diff> unix_sock_group = &#34;libvirt&#34;
+ unix_sock_rw_perms = &#34;0770&#34;
+</code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo usermod -a -G libvirt gylt
+newgrp libvirt
+sudo systemctl restart libvirtd.service
+</code></pre></td></tr></table></div></div><h3 id=安卓模拟器waydroid>安卓模拟器waydroid</h3><p>启动waydroid需要安装支持binder核心的linux-zen，
+yay -S waydroid</p><p>sudo waydroid init -s GAPPS -f</p><h3 id=软件整理>软件整理</h3><p><a href=https://github.com/chiwent/awesome-linux-software-cn>https://github.com/chiwent/awesome-linux-software-cn</a></p><p><a href=https://wiki.archlinux.org/index.php/List_of_applications target=_blank rel="noopener noreffer">官方wiki推荐软件</a></p><p><a href=https://kongll.github.io/2015/06/23/Linux%E4%B8%8B%E7%9A%84%E7%BB%8F%E5%85%B8%E8%BD%AF%E4%BB%B6-%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8/ target=_blank rel="noopener noreffer">https://kongll.github.io/2015/06/23/Linux下的经典软件-史上最全/</a></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-text data-lang=text>tigervnc #远程连接
+hardinfo #系统信息
+pamac-aur octopi #图形化商店
+steam watt-toolkit-bin # steam++
+yay -S wps-office-cn wps-office-mui-zh-cn #wps-office
+yay -S google-chrome #谷歌浏览器
+yay -S ark p7zip unrar 解压缩文件
+
+yay -S icalingua++
+Krusader 高级文件管理
+typora-free-cn #md文件编辑https://github.com/Soanguy/typora-theme-autumnus,Autumnus-Less
+flameshot  #火焰截图
+visual-studio-code-bin #vscode
+KolourPaint  #画图
+yay -S joplin-desktop  #笔记
+screenfetch  neofetch  #终端logo
+
+thefuck #
+you-get #
+timeshift #快照恢复
+calibre # 电子书转换
+foxitreader #福吸PDF阅读
+
+okular
+evince
+
+bleachbit #垃圾删除
+htop   #进程查看工具 
+vlc   #多媒体播放工具   
+peek  #录屏
+tmux    #终端复用工具            
+bat    #终端文件查看工具   
+speedcrunch #计算器
+
+anki #记忆卡片
+Blender #3d画图
+netease-cloud-music #网易云音乐
+uget #下载器
+Krita #ps
+obs-studio #录屏直播
+qBittorrent #bt下载
+
+epdfview #pdf阅读
+ristretto #图片查看
+gthumb #看图
+dia #流程图
+zathura  zathura-pdf-mupdf #终端阅读
+https://wiki.archlinux.org/title/zathura
+lolcat #渐变色,加参数|lolcat
+hmcl #我的世界启动器
+KTouch #打字
+Shotcut #视频剪辑软件
+kdenlive  #视频剪辑软件
+mpv #播放
+cmatrix #下落的字体
+variety #自动切换壁纸
+rhythmbox rhythmbox-tray-icon #音乐播放
+stardict #词典
+meld #文件比较
+</code></pre></td></tr></table></div></div><h3 id=retroarch>retroarch</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre class=chroma><code class=language-bash data-lang=bash>sudo pacman -S retroarch retroarch-assets-xmb  libretro-core-info
+</code></pre></td></tr></table></div></div><p>解决中文乱码,提前准备中文字体文件</p><p>打开retroarch自动创建配置文件`~/.config/retroarch/retroarch.cong</p><pre><code>menu_driver = &quot;xmb&quot;
+xmb_font = &quot;~/.local/share/fonts/font.ttf&quot;
+menu_show_core_updater = &quot;true&quot;
+</code></pre><p>[核心下载](</p></div><div class=post-footer id=post-footer><div class=post-info><div class=post-info-line><div class=post-info-mod><span>更新于 2021-01-01</span></div><div class=post-info-license></div></div><div class=post-info-line><div class=post-info-md><span><a class=link-to-markdown href=/2021/01/archlinux%E5%AE%89%E8%A3%85/index.md target=_blank>阅读原始文档</a></span></div><div class=post-info-share><span></span></div></div></div><div class=post-info-more><section class=post-tags><i class="fas fa-tags fa-fw"></i>&nbsp;<a href=/tags/archlinux/>Archlinux</a></section><section><span><a href=javascript:void(0); onclick=window.history.back()>返回</a></span>&nbsp;|&nbsp;<span><a href=/>主页</a></span></section></div><div class=post-nav></div></div></article></div></main><footer class=footer><div class=footer-container><div class=footer-line><i class="far fa-copyright fa-fw"></i><span itemprop=copyrightYear>2019 - 2022</span><span class=author itemprop=copyrightHolder>&nbsp;<a href=about target=_blank>孤云凌天</a></span>&nbsp;|&nbsp;<span class=license><a rel="license external nofollow noopener noreffer" href=https://creativecommons.org/licenses/by-nc/4.0/ target=_blank>CC BY-NC 4.0</a></span></div></div></footer></div><div id=fixed-buttons><a href=# id=back-to-top class=fixed-button title=回到顶部><i class="fas fa-arrow-up fa-fw"></i>
+</a><a href=# id=view-comments class=fixed-button title=查看评论><i class="fas fa-comment fa-fw"></i></a></div><script type=text/javascript src=/lib/smooth-scroll/smooth-scroll.min.js></script><script type=text/javascript src=/lib/autocomplete/autocomplete.min.js></script><script type=text/javascript src=/lib/lunr/lunr.min.js></script><script type=text/javascript src=/lib/lunr/lunr.stemmer.support.min.js></script><script type=text/javascript src=/lib/lunr/lunr.zh.min.js></script><script type=text/javascript src=/lib/lazysizes/lazysizes.min.js></script><script type=text/javascript src=/lib/twemoji/twemoji.min.js></script><script type=text/javascript src=/lib/clipboard/clipboard.min.js></script><script type=text/javascript>window.config={code:{copyTitle:"复制到剪贴板",maxShownLines:10},comment:{},search:{highlightTag:"em",lunrIndexURL:"/index.json",lunrLanguageCode:"zh",lunrSegmentitURL:"/lib/lunr/lunr.segmentit.js",maxResultLength:10,noResultsFound:"没有找到结果",snippetLength:50,type:"lunr"},twemoji:!0}</script><script type=text/javascript src=/js/theme.min.js></script></body></html>
