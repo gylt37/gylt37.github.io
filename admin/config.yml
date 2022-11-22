@@ -1,7 +1,6 @@
 # https://www.netlifycms.org/docs/add-to-your-site/
 backend:
-  name: github
-  repo: gylt37/blog
+  name: git-gateway
   branch: main # Branch to update (optional; defaults to master)
   squash_merges: true # beta feature
 
