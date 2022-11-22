@@ -19,29 +19,39 @@ public_folder: "/img/uploads" # The src attribute for uploaded media will begin 
 media_folder_relative: true
 
 
-collections:
-  - name: "post" # Used in routes, e.g., /admin/collections/blog
-    label: "Post" # Used in the UI
-    folder: "content/post" # The path to the folder where the documents are stored
-    path: '{{slug}}/index' # beta feature
-    media_folder: ''
-    public_folder: ''
-    # adding a nested object will show the collection folder structure
-    nested:
-      depth: 100 # max depth to show in the collection tree
-      summary: '{{title}}' # optional summary for a tree node, defaults to the inferred title field
-    # adding a meta object with a path property allows editing the path of entries
-    # moving an existing entry will move the entire sub tree of the entry to the new location
-    meta: { path: { widget: string, label: 'Path', index_file: 'index', hint: 'markdown文件路径, 对于page bundle, 如 "一级目录/二级目录/page-bundle目录/index.md", 只需要填写 "一级目录/二级目录/page-bundle目录",不
-要忘记填写page-bundle目录' } }
-    create: true # Allow users to create new documents in this collection
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
-    fields: # The fields for each document, usually in front matter
-      - {label: "Title", name: "title", widget: "string", hint: "文章标题"}
-      - {label: "Slug", name: "slug", widget: "string", required: false, hint: "Slug可以是目录,如 linux/archlinux, 此项会作为路径的功能可能会被 path meta 覆盖"}
-      - {label: "Comments", name: "comments", widget: "boolean", default: true, hint: "true 允许评论, false 禁止评论"}
-      - {label: "Draft", name: "draft", widget: "boolean", default: true, hint: "草稿不会 build"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Featured Image", name: "cover", widget: "image", required: false, hint: "封面图片"}
-      - {label: "Tags", name: "tags", widget: "list", required: false, "文章标签，用半角逗号分隔"}
-      - {label: "Body", name: "body", widget: "markdown", hint: "博客正文"}
+collections: # https://www.netlifycms.org/docs/configuration-options/#collections
+  - name: 'posts'
+    label: '文章'
+    folder: 'content/posts'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    editor:
+      preview: false
+    fields:
+      - { label: '標題', name: 'title', widget: 'string' }
+      - { label: '發布日期', name: 'date', widget: 'datetime' }
+      - { label: '摘要', name: 'description', widget: 'string' }
+      - { label: '內容', name: 'body', widget: 'markdown' }
+      - { label: "標籤", name: "tags", widget: "list", required: false}
+      - { label: "分類", name: "categories", widget: "list", required: false}
+  - name: "series"
+    label: "系列"
+    folder: "content/series"
+    create: true
+    fields:
+      - {label: "標題", name: "title", widget: "string"}
+      - {label: "内容", name: "body", widget: "markdown", required: false}
+  - name: "categories"
+    label: "分類"
+    folder: "content/categories"
+    create: true
+    fields:
+      - {label: "標題", name: "title", widget: "string"}
+      - {label: "内容", name: "body", widget: "markdown", required: false}
+  - name: "tags"
+    label: "標籤"
+    folder: "content/tags"
+    create: true
+    fields:
+      - {label: "標題", name: "title", widget: "string"}
+      - {label: "内容", name: "body", widget: "markdown", required: false}
