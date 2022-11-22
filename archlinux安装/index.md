@@ -409,7 +409,8 @@ reboot
 ``` bash
 sudo pacman -S linux-zen linux-zen-headers #更换zen内核
 sudo pacman -S xorg-server xorg-xinit xorg-apps # xorg
-sudo pacman -S noto-fonts noto-fonts-cjk ttf-monaco ttf-font-awesome ttf-hack xorg-fonts-misc ttf-nerd-fonts-symbols-2048-em-mono #字体
+sudo pacman -S noto-fonts noto-fonts-cjk ttf-monaco ttf-font-awesome \
+ttf-hack xorg-fonts-misc ttf-nerd-fonts-symbols-2048-em-mono #字体
 ```
 
 软件介绍
@@ -671,17 +672,19 @@ snapper -c root create-config /
 
 由于Btrf格式下，分区较多会导致删除快照时cpu占用较高，所以需要减少自动快照数量或者关闭自动快照只使用手动快照。编辑root配置文件`sudo vim /etc/snapper/configs/root`，
 
-    # 设置普通用户权限
-    ALLOW_USERS="gylt"
-    # 关闭自动创建快照
-    TIMELINE_CREATE="no"
-    # 保留3个每日快照，1个每周快照，1个每月快照
-    TIMELINE_MIN_AGE="1800"
-    TIMELINE_LIMIT_HOURLY="0"
-    TIMELINE_LIMIT_DAILY="3"
-    TIMELINE_LIMIT_WEEKLY="1"
-    TIMELINE_LIMIT_MONTHLY="1"
-    TIMELINE_LIMIT_YEARLY="0"
+```ini
+# 设置普通用户权限
+ALLOW_USERS="gylt"
+# 关闭自动创建快照
+TIMELINE_CREATE="no"
+# 保留3个每日快照，1个每周快照，1个每月快照
+TIMELINE_MIN_AGE="1800"
+TIMELINE_LIMIT_HOURLY="0"
+TIMELINE_LIMIT_DAILY="3"
+TIMELINE_LIMIT_WEEKLY="1"
+TIMELINE_LIMIT_MONTHLY="1"
+TIMELINE_LIMIT_YEARLY="0"
+```
 
 添加权限读取/.snapshots
 
@@ -911,18 +914,22 @@ yay -S blueman  #图形配置工具
 
 禁用鼠标加速，编辑`/etc/X11/xorg.conf.d/50-mouse-acceleration.conf`
 
-    Section "InputClass"
-        Identifier "My Mouse"
-        MatchIsPointer "yes"
-        Option "AccelerationProfile" "-1"
-        Option "AccelerationScheme" "none"
-        Option "AccelSpeed" "-1"
-    EndSection
+```ini
+Section "InputClass"
+    Identifier "My Mouse"
+    MatchIsPointer "yes"
+    Option "AccelerationProfile" "-1"
+    Option "AccelerationScheme" "none"
+    Option "AccelSpeed" "-1"
+EndSection
+```
 
 ### 触摸板
 
-    yay -S xf86-input-synaptics
-    cp /usr/share/X11/xorg.conf.d/70-synaptics.conf /etc/X11/xorg.conf.d/
+```bash
+yay -S xf86-input-synaptics
+cp /usr/share/X11/xorg.conf.d/70-synaptics.conf /etc/X11/xorg.conf.d/
+```
 
 我的如下
 
@@ -970,7 +977,7 @@ yay -S arandr
 
 启动UI界面后修改完毕后，保存参数，将参数加入到`/home/gylt/.xprofile`。
 
-``` bash
+``` ini
 if [ $(xrandr | grep ' connected' | wc -l) == 2 ]
 then
     $(xrandr --output eDP-1 --primary --mode 1920x1080 --pos 1920x0 --rotate normal --output HDMI-1 --mode 1920x1080 --pos 0x0 --rotate normal )
@@ -1016,8 +1023,10 @@ cp /usr/share/doc/alacritty/example/alacritty.yml ~/.config/alacritty/alacritty.
 
 用下面命令生成配置文件
 
-    mkdir -p ~/.config/rofi
-    rofi -dump-config > ~/.config/rofi/config.rosi
+```bash
+mkdir -p ~/.config/rofi
+rofi -dump-config > ~/.config/rofi/config.rosi
+```
 
 主题文件到[这里](https://github.com/davatorium/rofi-themes/)选择，我认为[这个](https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/cloud.rasi)不错。
 
@@ -1174,13 +1183,6 @@ newgrp libvirt
 sudo systemctl restart libvirtd.service
 ```
 
-### 安卓模拟器waydroid
-
-启动waydroid需要安装支持binder核心的linux-zen，
-yay -S waydroid
-
-sudo waydroid init -s GAPPS -f
-
 ### 软件整理
 
 https://github.com/chiwent/awesome-linux-software-cn
@@ -1266,3 +1268,9 @@ sudo pacman -S retroarch retroarch-assets-xmb  libretro-core-info
     menu_show_core_updater = "true"
 
 [核心下载](
+
+---
+
+> 作者:   
+> URL: https://gylt37.github.io/archlinux%E5%AE%89%E8%A3%85/  
+
